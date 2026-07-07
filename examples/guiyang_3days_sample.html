@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>贵阳3天2晚 · 家庭避暑之旅 · 示例</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;900&family=Noto+Sans+SC:wght@400;500;700;900&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Inter','Noto Sans SC',sans-serif;background:#f5f0eb;color:#2c2c2c;font-size:18px;line-height:1.8}
+.hero{background:linear-gradient(160deg,#FF6B35,#FF8F65,#FF6B35);padding:48px 24px 36px;text-align:center;color:#fff}
+.hero h1{font-size:34px;font-weight:900;letter-spacing:-1px;margin-bottom:8px}
+.hero .sub{font-size:17px;opacity:.85;margin-bottom:16px}
+.hero-stats{display:flex;justify-content:center;gap:12px;flex-wrap:wrap}
+.hero-stats span{background:rgba(255,255,255,.2);padding:8px 20px;border-radius:20px;font-size:14px;font-weight:500}
+.hero .tags{display:flex;justify-content:center;gap:8px;flex-wrap:wrap;margin-top:14px}
+.hero .tags span{background:rgba(255,255,255,.15);padding:6px 18px;border-radius:14px;font-size:13px}
+.ct{max-width:860px;margin:0 auto;padding:20px 16px 0}
+.sl{font-size:15px;color:#FF6B35;font-weight:600;letter-spacing:3px;margin-bottom:6px;margin-top:32px}
+.st{font-size:26px;font-weight:900;margin-bottom:20px;display:flex;align-items:center;gap:8px}
+.st span{font-weight:300;color:#bbb;font-size:19px}
+.dc{background:#fff;border-radius:18px;padding:24px;margin-bottom:16px;box-shadow:0 2px 20px rgba(0,0,0,.04)}
+.dh{display:flex;align-items:center;gap:10px;margin-bottom:14px;padding-bottom:14px;border-bottom:2px solid var(--c)}
+.dn{font-size:30px;font-weight:900;letter-spacing:-1px}
+.dt{font-size:17px;color:#888;font-weight:500}
+.di{display:grid;gap:6px}
+.itm{display:flex;align-items:center;gap:12px;padding:12px 0;border-bottom:1px solid #f5f0eb;transition:.25s cubic-bezier(.22,1,.36,1);cursor:default;border-radius:10px}
+.itm:hover{transform:scale(1.02);background:#faf6f2;box-shadow:0 4px 16px rgba(0,0,0,.06)}
+.itm-sm{padding:8px 10px;margin:2px 0}
+.itm-sm .itm-time{font-size:12px}
+.itm-sm .itm-icon{font-size:16px}
+.itm-sm .itm-title{font-size:14px;color:#888}
+.itm-sm .itm-desc{font-size:13px}
+.itm-sm .itm-cost{font-size:14px}
+.itm-lg{padding:14px 12px;margin:4px 0}
+.itm-lg .itm-time{font-size:14px;font-weight:600;color:#888}
+.itm-lg .itm-icon{font-size:26px}
+.itm-lg .itm-title{font-size:18px}
+.itm-lg .itm-desc{font-size:15px}
+.itm-lg .itm-cost{font-size:17px}
+.itm:last-child{border:none}
+.itm-time{font-size:13px;color:#aaa;min-width:72px;flex-shrink:0;font-weight:500}
+.itm-icon{font-size:22px;width:30px;text-align:center;flex-shrink:0}
+.itm-body{flex:1;min-width:0}
+.itm-title{font-size:14px;font-weight:600;color:#2c2c2c}
+.itm-desc{font-size:12px;color:#999;margin-top:1px}
+.itm-actions{display:flex;align-items:center;gap:0;flex-shrink:0;width:170px;justify-content:flex-end}
+.itm-cost{font-size:14px;font-weight:700;width:72px;text-align:right}
+.itm-sep{color:#ddd;font-size:14px;font-weight:300;margin:0;width:16px;text-align:center;user-select:none}
+.ll{display:inline-flex;padding:7px 0;border-radius:8px;font-size:14px;text-decoration:none;color:#fff;font-weight:500;transition:.2s;width:76px;justify-content:center;text-align:center}
+.ll:hover{transform:translateY(-1px)}
+.l1{background:#EE4D2D}.l2{background:#1E90D7}.l3{background:#FFC300;color:#333!important}.l4{background:#29A1FF}
+.dd{text-align:right;font-size:16px;font-weight:700;padding-top:16px;margin-top:12px;border-top:1px solid #eee;color:var(--c)}
+.fl{text-decoration:none;color:inherit;display:block}
+.fg{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:8px}
+.fi{display:flex;justify-content:space-between;align-items:center;padding:14px 18px;background:#fff;border-radius:12px;box-shadow:0 1px 8px rgba(0,0,0,.04);transition:.2s;cursor:pointer}
+.fi:hover{transform:translateY(-3px);box-shadow:0 8px 28px rgba(255,107,53,.1)}
+.fn{font-size:16px;font-weight:600}
+.fs{font-size:13px;color:#999;margin-top:1px}
+.fp{font-size:16px;font-weight:700;color:#FF6B35}
+.bc{background:linear-gradient(135deg,#FF8F65,#FF6B35);border-radius:18px;padding:28px;display:grid;gap:12px;box-shadow:0 4px 20px rgba(255,107,53,.2)}
+.bi{display:flex;align-items:center;gap:12px}
+.bl{font-size:15px;color:rgba(255,255,255,.95);min-width:80px;font-weight:500}
+.bt{flex:1;height:8px;background:rgba(255,255,255,.08);border-radius:4px;overflow:hidden}
+.bf{height:100%;border-radius:4px;transition:width 1s ease}
+.ba{font-size:15px;font-weight:700;color:#fff;min-width:52px;text-align:right}
+.bdv{height:1px;background:rgba(255,255,255,.08);margin:8px 0}
+.bto{display:flex;justify-content:space-between;align-items:center;padding-top:4px}
+.btl{font-size:20px;font-weight:700;color:#fff}
+.bta{font-size:26px;font-weight:900;color:#FFD93D}
+.blf{font-size:15px;color:rgba(255,255,255,.75)}
+.pb{display:flex;justify-content:center;gap:16px;flex-wrap:wrap;padding:24px 0 8px}
+.pb a{text-decoration:none;display:flex;flex-direction:column;align-items:center;gap:4px;color:#999;transition:.3s;padding:8px}
+.pb a:hover{color:#FF6B35}
+.pb .pi{font-size:20px;width:44px;height:44px;display:flex;align-items:center;justify-content:center;background:#fff;border-radius:12px;transition:.3s;box-shadow:0 2px 8px rgba(0,0,0,.04)}
+.pb a:hover .pi{background:#FF6B35;color:#fff;transform:translateY(-3px);box-shadow:0 6px 16px rgba(255,107,53,.2)}
+.pb span{font-size:11px;font-weight:500}
+.tps{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:24px}
+.tp{background:#fff;border-radius:14px;padding:20px;box-shadow:0 1px 8px rgba(0,0,0,.04)}
+.tp h3{font-size:17px;font-weight:700;margin-bottom:12px;display:flex;align-items:center;gap:6px}
+.tp li{list-style:none;font-size:15px;color:#666;padding:6px 0;display:flex;align-items:center;gap:6px}
+.tp li::before{content:"\2726";color:#FF6B35;font-size:10px}
+.ft{text-align:center;padding:32px;font-size:14px;color:#bbb}
+@media(max-width:640px){.tps{grid-template-columns:1fr}.itm{flex-wrap:wrap;padding:10px 0}.itm-time{min-width:50px}.itm-body{width:calc(100% - 50px)}.itm-actions{width:100%;padding-left:12px;margin-top:6px;justify-content:flex-start}.ll{width:60px}}
+@media print{.ll{display:none}.hero{background:#FF6B35!important}}
+</style></head>
+<body>
+<div class="hero"><h1>贵阳3天2晚 · 家庭避暑之旅</h1><p class="sub">广州出发 · 休闲+美食</p>
+<div class="hero-stats"><span>广州->贵阳</span><span>3天2晚</span><span>¥2000/人</span><span>23°C</span></div>
+<div class="tags"><span>去程 G2942 07:44-11:10</span><span>返程 G2922 16:43-20:32</span></div></div>
+<div class="ct">
+<div class="sl">ITINERARY</div><div class="st">每日<span>行程</span></div><div class="dc"><div class="dh" style="--c:#FF6B35"><div class="dn" style="color:#FF6B35">第1天</div><div class="dt">抵达贵阳 · 老城烟火</div></div><div class="di"><div class="itm itm-sm"><div class="itm-time">07:00-07:30</div><div class="itm-icon">🚄</div><div class="itm-body"><div class="itm-title">广州南站出发</div><div class="itm-desc">地铁/打车到广州南站</div></div><div class="itm-actions"><div class="itm-cost">¥30</div><span class="itm-sep">|</span><a class="ll l4 if link=="高德" else 1 if link=="12306" else 2 if link=="携程" else 3" href="https://ditu.amap.com/search?query=广州南站出发" target="_blank">高德</a></div></div><div class="itm itm-sm"><div class="itm-time">07:44-11:10</div><div class="itm-icon">🚄</div><div class="itm-body"><div class="itm-title">高铁G2942</div><div class="itm-desc">广州南-&gt;贵阳北 3h26min</div></div><div class="itm-actions"><div class="itm-cost">¥406</div><span class="itm-sep">|</span><a class="ll l4 if link=="高德" else 1 if link=="12306" else 2 if link=="携程" else 3" href="https://www.12306.cn/" target="_blank">12306</a></div></div><div class="itm itm-sm"><div class="itm-time">11:10-11:40</div><div class="itm-icon">🚕</div><div class="itm-body"><div class="itm-title">贵阳北站-&gt;酒店</div><div class="itm-desc">打车到喷水池 6km 15min</div></div><div class="itm-actions"><div class="itm-cost">¥20</div><span class="itm-sep">|</span><a class="ll l4 if link=="高德" else 1 if link=="12306" else 2 if link=="携程" else 3" href="https://ditu.amap.com/search?query=贵阳北站-&amp;gt;酒店" target="_blank">高德</a></div></div><div class="itm itm-lg"><div class="itm-time">11:40-12:00</div><div class="itm-icon">🏨</div><div class="itm-body"><div class="itm-title">入住酒店</div><div class="itm-desc">喷水池区域 舒适型酒店</div></div><div class="itm-actions"><div class="itm-cost">¥300</div><span class="itm-sep">|</span><a class="ll l4 if link=="高德" else 1 if link=="12306" else 2 if link=="携程" else 3" href="https://hotels.ctrip.com/" target="_blank">携程</a></div></div><div class="itm itm-lg"><div class="itm-time">12:00-13:00</div><div class="itm-icon">🍜</div><div class="itm-body"><div class="itm-title">午餐:酸汤鱼</div><div class="itm-desc">亮欢寨酸汤鱼(飞山街店)</div></div><div class="itm-actions"><div class="itm-cost">¥80</div><span class="itm-sep">|</span><a class="ll l4 if link=="高德" else 1 if link=="12306" else 2 if link=="携程" else 3" href="https://www.dianping.com/" target="_blank">大众点评</a></div></div><div class="itm itm-lg"><div class="itm-time">13:30-17:00</div><div class="itm-icon">🐒</div><div class="itm-body"><div class="itm-title">黔灵山公园</div><div class="itm-desc">门票5元 看猕猴+熊猫</div></div><div class="itm-actions"><div class="itm-cost">¥5</div><span class="itm-sep">|</span><a class="ll l4 if link=="高德" else 1 if link=="12306" else 2 if link=="携程" else 3" href="https://ditu.amap.com/search?query=黔灵山公园" target="_blank">高德</a></div></div><div class="itm itm-lg"><div class="itm-time">18:00-19:30</div><div class="itm-icon">🍢</div><div class="itm-body"><div class="itm-title">民生路扫街</div><div class="itm-desc">肠旺面+豆腐圆子+香酥鸭</div></div><div class="itm-actions"><div class="itm-cost">¥62</div><span class="itm-sep">|</span><a class="ll l4 if link=="高德" else 1 if link=="12306" else 2 if link=="携程" else 3" href="https://www.dianping.com/" target="_blank">大众点评</a></div></div><div class="itm itm-lg"><div class="itm-time">20:00-21:00</div><div class="itm-icon">🌃</div><div class="itm-body"><div class="itm-title">甲秀楼夜景</div><div class="itm-desc">免费 贵阳地标 南明河畔</div></div><div class="itm-actions"><div class="itm-cost">免费</div><span class="itm-sep">|</span><a class="ll l4 if link=="高德" else 1 if link=="12306" else 2 if link=="携程" else 3" href="https://ditu.amap.com/search?query=甲秀楼" target="_blank">高德</a></div></div></div><div class="dd" style="--c:#FF6B35">本日合计 ¥903</div></div><div class="dc"><div class="dh" style="--c:#4ECDC4"><div class="dn" style="color:#4ECDC4">第2天</div><div class="dt">山水古镇 · 文艺探索</div></div><div class="di"><div class="itm itm-lg"><div class="itm-time">08:00-08:30</div><div class="itm-icon">🍜</div><div class="itm-body"><div class="itm-title">早餐:牛肉粉</div><div class="itm-desc">花溪王记牛肉粉</div></div><div class="itm-actions"><div class="itm-cost">¥18</div><span class="itm-sep">|</span><a class="ll l4 if link=="高德" else 1 if link=="12306" else 2 if link=="携程" else 3" href="https://www.dianping.com/" target="_blank">大众点评</a></div></div><div class="itm itm-lg"><div class="itm-time">09:00-11:00</div><div class="itm-icon">🏛️</div><div class="itm-body"><div class="itm-title">贵州省博物馆</div><div class="itm-desc">免费 苗族银饰</div></div><div class="itm-actions"><div class="itm-cost">免费</div><span class="itm-sep">|</span><a class="ll l4 if link=="高德" else 1 if link=="12306" else 2 if link=="携程" else 3" href="https://ditu.amap.com/search?query=贵州省博物馆" target="_blank">高德</a></div></div><div class="itm itm-sm"><div class="itm-time">11:00-12:00</div><div class="itm-icon">🚕</div><div class="itm-body"><div class="itm-title">博物馆-&gt;花溪区</div><div class="itm-desc">打车约20min</div></div><div class="itm-actions"><div class="itm-cost">¥25</div><span class="itm-sep">|</span><a class="ll l4 if link=="高德" else 1 if link=="12306" else 2 if link=="携程" else 3" href="https://ditu.amap.com/search?query=博物馆-&amp;gt;花溪区" target="_blank">高德</a></div></div><div class="itm itm-lg"><div class="itm-time">12:00-13:00</div><div class="itm-icon">🍲</div><div class="itm-body"><div class="itm-title">午餐</div><div class="itm-desc">花溪区当地黔菜</div></div><div class="itm-actions"><div class="itm-cost">¥60</div><span class="itm-sep">|</span><a class="ll l4 if link=="高德" else 1 if link=="12306" else 2 if link=="携程" else 3" href="https://www.dianping.com/" target="_blank">大众点评</a></div></div><div class="itm itm-lg"><div class="itm-time">13:30-16:00</div><div class="itm-icon">🗿</div><div class="itm-body"><div class="itm-title">花溪夜郎谷</div><div class="itm-desc">门票20元 石头城堡</div></div><div class="itm-actions"><div class="itm-cost">¥20</div><span class="itm-sep">|</span><a class="ll l4 if link=="高德" else 1 if link=="12306" else 2 if link=="携程" else 3" href="https://ditu.amap.com/search?query=花溪夜郎谷" target="_blank">高德</a></div></div><div class="itm itm-sm"><div class="itm-time">16:00-17:00</div><div class="itm-icon">🚕</div><div class="itm-body"><div class="itm-title">夜郎谷-&gt;青云市集</div><div class="itm-desc">打车约25min</div></div><div class="itm-actions"><div class="itm-cost">¥35</div><span class="itm-sep">|</span><a class="ll l4 if link=="高德" else 1 if link=="12306" else 2 if link=="携程" else 3" href="https://ditu.amap.com/search?query=夜郎谷-&amp;gt;青云市集" target="_blank">高德</a></div></div><div class="itm itm-lg"><div class="itm-time">18:00-20:00</div><div class="itm-icon">🌮</div><div class="itm-body"><div class="itm-title">青云市集夜市</div><div class="itm-desc">烙锅+烤串 夜市</div></div><div class="itm-actions"><div class="itm-cost">¥60</div><span class="itm-sep">|</span><a class="ll l4 if link=="高德" else 1 if link=="12306" else 2 if link=="携程" else 3" href="https://www.dianping.com/" target="_blank">大众点评</a></div></div></div><div class="dd" style="--c:#4ECDC4">本日合计 ¥218</div></div><div class="dc"><div class="dh" style="--c:#FFD93D"><div class="dn" style="color:#FFD93D">第3天</div><div class="dt">古镇收尾 · 满载而归</div></div><div class="di"><div class="itm itm-lg"><div class="itm-time">08:00-08:30</div><div class="itm-icon">🍜</div><div class="itm-body"><div class="itm-title">早餐退房</div><div class="itm-desc">酒店早餐+退房</div></div><div class="itm-actions"><div class="itm-cost">免费</div><span class="itm-sep">|</span><a class="ll l4 if link=="高德" else 1 if link=="12306" else 2 if link=="携程" else 3" href="https://ditu.amap.com/search?query=早餐退房" target="_blank">高德</a></div></div><div class="itm itm-sm"><div class="itm-time">08:30-09:10</div><div class="itm-icon">🚕</div><div class="itm-body"><div class="itm-title">市区-&gt;青岩古镇</div><div class="itm-desc">打车35min</div></div><div class="itm-actions"><div class="itm-cost">¥45</div><span class="itm-sep">|</span><a class="ll l4 if link=="高德" else 1 if link=="12306" else 2 if link=="携程" else 3" href="https://ditu.amap.com/search?query=市区-&amp;gt;青岩古镇" target="_blank">高德</a></div></div><div class="itm itm-lg"><div class="itm-time">09:30-12:00</div><div class="itm-icon">🏯</div><div class="itm-body"><div class="itm-title">青岩古镇</div><div class="itm-desc">门票10元 卤猪脚必吃</div></div><div class="itm-actions"><div class="itm-cost">¥10</div><span class="itm-sep">|</span><a class="ll l4 if link=="高德" else 1 if link=="12306" else 2 if link=="携程" else 3" href="https://ditu.amap.com/search?query=青岩古镇" target="_blank">高德</a></div></div><div class="itm itm-lg"><div class="itm-time">12:00-13:00</div><div class="itm-icon">🥟</div><div class="itm-body"><div class="itm-title">午餐:丝娃娃</div><div class="itm-desc">丝娃娃+卤猪脚</div></div><div class="itm-actions"><div class="itm-cost">¥45</div><span class="itm-sep">|</span><a class="ll l4 if link=="高德" else 1 if link=="12306" else 2 if link=="携程" else 3" href="https://www.dianping.com/" target="_blank">大众点评</a></div></div><div class="itm itm-sm"><div class="itm-time">13:00-13:40</div><div class="itm-icon">🚕</div><div class="itm-body"><div class="itm-title">青岩古镇-&gt;贵阳北站</div><div class="itm-desc">打车35min</div></div><div class="itm-actions"><div class="itm-cost">¥45</div><span class="itm-sep">|</span><a class="ll l4 if link=="高德" else 1 if link=="12306" else 2 if link=="携程" else 3" href="https://ditu.amap.com/search?query=青岩古镇-&amp;gt;贵阳北站" target="_blank">高德</a></div></div><div class="itm itm-sm"><div class="itm-time">14:00-14:30</div><div class="itm-icon">⏳</div><div class="itm-body"><div class="itm-title">贵阳北站候车</div><div class="itm-desc">提前到站候车</div></div><div class="itm-actions"><div class="itm-cost">免费</div><span class="itm-sep">|</span><a class="ll l4 if link=="高德" else 1 if link=="12306" else 2 if link=="携程" else 3" href="https://ditu.amap.com/search?query=贵阳北站候车" target="_blank">高德</a></div></div><div class="itm itm-sm"><div class="itm-time">14:30-18:30</div><div class="itm-icon">🚄</div><div class="itm-body"><div class="itm-title">高铁G2922回程</div><div class="itm-desc">贵阳北-&gt;广州南 3h49min</div></div><div class="itm-actions"><div class="itm-cost">¥422</div><span class="itm-sep">|</span><a class="ll l4 if link=="高德" else 1 if link=="12306" else 2 if link=="携程" else 3" href="https://www.12306.cn/" target="_blank">12306</a></div></div></div><div class="dd" style="--c:#FFD93D">本日合计 ¥567</div></div>
+<div class="sl">FOOD</div><div class="st">美食<span>推荐</span></div><div class="fg"><a class="fl" href="https://www.xiaohongshu.com/search_result?keyword=肠旺面" target="_blank"><div class="fi"><div><div class="fn">肠旺面</div><div class="fs">金牌罗记肠旺面</div></div><div class="fp">12元</div></div></a><a class="fl" href="https://www.xiaohongshu.com/search_result?keyword=豆腐圆子" target="_blank"><div class="fi"><div><div class="fn">豆腐圆子</div><div class="fs">雷家豆腐圆子</div></div><div class="fp">10元</div></div></a><a class="fl" href="https://www.xiaohongshu.com/search_result?keyword=但家香酥鸭" target="_blank"><div class="fi"><div><div class="fn">但家香酥鸭</div><div class="fs">小十字总店</div></div><div class="fp">30元</div></div></a><a class="fl" href="https://www.xiaohongshu.com/search_result?keyword=恋爱豆腐果" target="_blank"><div class="fi"><div><div class="fn">恋爱豆腐果</div><div class="fs">路边摊</div></div><div class="fp">5元</div></div></a><a class="fl" href="https://www.xiaohongshu.com/search_result?keyword=冰粉" target="_blank"><div class="fi"><div><div class="fn">冰粉</div><div class="fs">随便一家</div></div><div class="fp">5元</div></div></a><a class="fl" href="https://www.xiaohongshu.com/search_result?keyword=卤猪脚" target="_blank"><div class="fi"><div><div class="fn">卤猪脚</div><div class="fs">金必轩(青岩)</div></div><div class="fp">40元</div></div></a></div>
+<div style="margin-top:28px"><div class="sl">BUDGET</div><div class="st">预算<span>透明</span></div>
+<div class="bc"><div class="bi"><div class="bl">高铁往返</div><div class="bt"><div class="bf" style="width:100%;background:#667eea"></div></div><div class="ba">¥828</div></div><div class="bi"><div class="bl">住宿2晚</div><div class="bt"><div class="bf" style="width:72%;background:#9B59B6"></div></div><div class="ba">¥600</div></div><div class="bi"><div class="bl">餐饮美食</div><div class="bt"><div class="bf" style="width:39%;background:#E74C3C"></div></div><div class="ba">¥325</div></div><div class="bi"><div class="bl">市内交通</div><div class="bt"><div class="bf" style="width:21%;background:#1ABC9C"></div></div><div class="ba">¥170</div></div><div class="bi"><div class="bl">门票</div><div class="bt"><div class="bf" style="width:4%;background:#FFB347"></div></div><div class="ba">¥35</div></div><div class="bi"><div class="bl">其他</div><div class="bt"><div class="bf" style="width:4%;background:#95A5A6"></div></div><div class="ba">¥30</div></div><div class="bdv"></div><div class="bto"><div class="btl">总计</div><div><span class="bta">¥1988</span><span class="blf">/ ¥2000 ✅剩余¥12</span></div></div></div></div>
+<div style="margin-top:28px"><div class="sl">TIPS</div><div class="st">贴士<span>与清单</span></div>
+<div class="tps"><div class="tp"><h3>省钱建议</h3><ul><li>选D字头动车可省116元</li><li>三人出行住宿人均200</li><li>博物馆/甲秀楼免费</li><li>7月多雨记得带伞</li></ul></div>
+<div class="tp"><h3>出发清单</h3><ul><li>身份证、学生证</li><li>晴雨伞、薄外套</li><li>充电宝、数据线</li><li>12306/携程/高德</li></ul></div></div></div>
+<div style="margin-top:12px"><div class="sl">PLATFORMS</div><div class="st">一键<span>跳转</span></div>
+<div class="pb">
+<a href="https://www.12306.cn/"><div class="pi">🚄</div><span>12306</span></a>
+<a href="https://hotels.ctrip.com/"><div class="pi">🏨</div><span>携程</span></a>
+<a href="https://www.dianping.com/"><div class="pi">🍜</div><span>大众点评</span></a>
+<a href="https://www.xiaohongshu.com/search_result?keyword=贵阳美食"><div class="pi">📕</div><span>小红书</span></a>
+<a href="https://ditu.amap.com/"><div class="pi">🗺️</div><span>高德</span></a>
+</div></div></div>
+<div class="ft">私人旅行管家 · 示例文件 · ¥1988/¥2000 预算内 ✅</div>
+</body></html>
