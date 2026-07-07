@@ -10,83 +10,121 @@ import os, json, subprocess, webbrowser
 
 # ===== 行程数据（可从这里修改，也可由Claude Code自动填入） =====
 TRIP = {
-    "title": "贵阳3天2晚 · 家庭避暑之旅",
+    "title": "成都+重庆6天5晚 · 双城记",
     "from_city": "广州",
-    "to_city": "贵阳",
+    "to_city": "成都+重庆",
     "from_station": "广州南",
-    "to_station": "贵阳北",
-    "days": 3,
-    "total_budget": 2000,
-    "weather": "23°C 避暑胜地",
-    "style": "休闲+美食",
-    "travelers": 3
+    "to_station": "成都东",
+    "days": 6,
+    "total_budget": 4000,
+    "weather": "28-35°C 夏季热情",
+    "style": "美食+文化+网红打卡",
+    "travelers": 1
 }
 
 # === 交通 ===
-TRAIN_GO = {"train": "G2942", "depart": "07:44", "arrive": "11:10", "duration": "3h26min", "cost": 406}
-TRAIN_BACK = {"train": "G2922", "depart": "16:43", "arrive": "20:32", "duration": "3h49min", "cost": 422}
+TRAIN_GO = {"train": "G3704", "depart": "11:59", "arrive": "19:01", "duration": "7h02min", "cost": 645}
+TRAIN_BACK = {"train": "G3723", "depart": "10:06", "arrive": "16:01", "duration": "5h55min", "cost": 481}
 
 # === 每日行程 ===
 DAYS = [
     {
-        "day": 1, "theme": "抵达贵阳 · 老城烟火", "color": "#FF6B35",
+        "day": 1, "theme": "广州→成都 · 初探蓉城", "color": "#FF6B35",
         "items": [
-            {"time": "07:00-07:30", "icon": "🚄", "title": "广州南站出发", "desc": "地铁/打车到广州南站", "cost": 30, "type": "交通"},
-            {"time": "07:44-11:10", "icon": "🚄", "title": "高铁G2942", "desc": "广州南→贵阳北 3h26min", "cost": 406, "type": "交通", "link": "12306", "kw": "广州南-贵阳北"},
-            {"time": "11:10-11:40", "icon": "🚕", "title": "贵阳北站→酒店", "desc": "打车到喷水池区域 约6km 15min", "cost": 25, "type": "交通"},
-            {"time": "11:40-12:00", "icon": "🏨", "title": "入住酒店", "desc": "喷水池/大十字区域 舒适型酒店", "cost": 300, "type": "住宿", "link": "携程", "kw": "贵阳喷水池酒店"},
-            {"time": "12:00-13:00", "icon": "🍜", "title": "午餐：酸汤鱼", "desc": "亮欢寨酸汤鱼(飞山街店) 贵阳灵魂美食", "cost": 80, "type": "美食", "link": "大众点评", "kw": "亮欢寨酸汤鱼"},
-            {"time": "13:30-17:00", "icon": "🐒", "title": "黔灵山公园", "desc": "门票¥5 看野生猕猴+熊猫+弘福寺", "cost": 5, "type": "景点", "link": "高德", "kw": "黔灵山公园"},
-            {"time": "18:00-19:30", "icon": "🍢", "title": "民生路扫街", "desc": "肠旺面+豆腐圆子+香酥鸭+冰粉", "cost": 62, "type": "美食", "link": "大众点评", "kw": "贵阳民生路美食"},
-            {"time": "20:00-21:00", "icon": "🌃", "title": "甲秀楼夜景", "desc": "免费 贵阳地标 南明河畔散步", "cost": 0, "type": "景点", "link": "高德", "kw": "甲秀楼"},
-            {"time": "21:00", "icon": "🏨", "title": "回酒店休息", "desc": "打车回酒店 约10min ¥15", "cost": 15, "type": "交通"},
+            {"time": "10:00-11:00", "icon": "🚄", "title": "广州南站出发", "desc": "地铁/打车到广州南站", "cost": 30, "type": "交通"},
+            {"time": "11:59-19:01", "icon": "🚄", "title": "高铁G3704", "desc": "广州南→成都东 7h02min ¥645", "cost": 645, "type": "交通", "link": "12306", "kw": "广州南-成都东"},
+            {"time": "19:01-19:30", "icon": "🚕", "title": "成都东站→酒店", "desc": "打车到春熙路/太古里区域 约8km 20min", "cost": 30, "type": "交通"},
+            {"time": "19:30-20:00", "icon": "🏨", "title": "入住酒店", "desc": "春熙路/太古里区域 舒适型酒店", "cost": 300, "type": "住宿", "link": "携程", "kw": "成都春熙路酒店"},
+            {"time": "20:00-21:30", "icon": "🍜", "title": "晚餐：火锅", "desc": "小龙坎/大龙燚/蜀大侠 成都火锅初体验", "cost": 100, "type": "美食", "link": "大众点评", "kw": "成都火锅"},
+            {"time": "21:30-22:30", "icon": "🌃", "title": "太古里夜景", "desc": "免费 成都时尚地标 IFS熊猫打卡", "cost": 0, "type": "景点", "link": "高德", "kw": "成都太古里"},
         ]
     },
     {
-        "day": 2, "theme": "山水古镇 · 文艺探索", "color": "#4ECDC4",
+        "day": 2, "theme": "熊猫+古蜀 · 成都经典", "color": "#4ECDC4",
         "items": [
-            {"time": "08:00-08:30", "icon": "🍜", "title": "早餐：牛肉粉", "desc": "花溪王记牛肉粉(民生路店)", "cost": 18, "type": "美食", "link": "大众点评", "kw": "花溪王记牛肉粉"},
-            {"time": "09:00-11:00", "icon": "🏛️", "title": "贵州省博物馆", "desc": "免费(需预约) 苗族银饰+民族服饰", "cost": 0, "type": "景点", "link": "高德", "kw": "贵州省博物馆"},
-            {"time": "11:00-12:00", "icon": "🚕", "title": "博物馆→花溪区", "desc": "打车到花溪方向 约20min ¥30", "cost": 30, "type": "交通"},
-            {"time": "12:00-13:00", "icon": "🍲", "title": "午餐", "desc": "花溪区当地餐厅 地道黔菜", "cost": 60, "type": "美食", "link": "大众点评", "kw": "花溪美食"},
-            {"time": "13:30-16:00", "icon": "🗿", "title": "花溪夜郎谷", "desc": "门票¥20 石头城堡超出片", "cost": 20, "type": "景点", "link": "高德", "kw": "花溪夜郎谷"},
-            {"time": "16:00-17:00", "icon": "🚕", "title": "夜郎谷→青云市集", "desc": "打车到市区 约30min ¥40", "cost": 40, "type": "交通"},
-            {"time": "18:00-20:00", "icon": "🌮", "title": "青云市集夜市", "desc": "烙锅+烤串 老厂房夜市", "cost": 60, "type": "美食", "link": "大众点评", "kw": "青云市集"},
-            {"time": "20:00", "icon": "🏨", "title": "回酒店休息", "desc": "步行回酒店 约10min", "cost": 0, "type": "交通"},
+            {"time": "07:30-08:00", "icon": "🍜", "title": "早餐：担担面", "desc": "成都早餐经典 推荐陈麻婆豆腐", "cost": 15, "type": "美食", "link": "大众点评", "kw": "陈麻婆豆腐"},
+            {"time": "08:00-12:00", "icon": "🐼", "title": "大熊猫繁育基地", "desc": "门票¥55 看国宝大熊猫 建议早上去", "cost": 55, "type": "景点", "link": "高德", "kw": "成都大熊猫繁育研究基地"},
+            {"time": "12:00-13:00", "icon": "🚕", "title": "基地→市区", "desc": "打车回春熙路 约30min ¥40", "cost": 40, "type": "交通"},
+            {"time": "13:00-14:00", "icon": "🍲", "title": "午餐：串串香", "desc": "钢管厂五区/冒椒火辣 成都必吃", "cost": 60, "type": "美食", "link": "大众点评", "kw": "成都串串香"},
+            {"time": "14:30-17:00", "icon": "🏛️", "title": "武侯祠+锦里", "desc": "门票¥50 三国文化圣地 锦里古街免费逛", "cost": 50, "type": "景点", "link": "高德", "kw": "武侯祠"},
+            {"time": "17:00-18:30", "icon": "🏘️", "title": "宽窄巷子", "desc": "免费 成都文化地标 感受老成都生活", "cost": 0, "type": "景点", "link": "高德", "kw": "宽窄巷子"},
+            {"time": "19:00-20:30", "icon": "🍜", "title": "晚餐", "desc": "宽窄巷子附近 钵钵鸡+夫妻肺片", "cost": 70, "type": "美食", "link": "大众点评", "kw": "宽窄巷子美食"},
+            {"time": "20:30", "icon": "🏨", "title": "回酒店休息", "desc": "打车回酒店 约10min ¥15", "cost": 15, "type": "交通"},
         ]
     },
     {
-        "day": 3, "theme": "古镇收尾 · 满载而归", "color": "#FFD93D",
+        "day": 3, "theme": "古蜀文明 · 成都深度", "color": "#FFD93D",
+        "items": [
+            {"time": "08:00-08:30", "icon": "🍜", "title": "早餐：钟水饺", "desc": "龙抄手/钟水饺 成都老字号早餐", "cost": 15, "type": "美食", "link": "大众点评", "kw": "钟水饺"},
+            {"time": "09:00-12:00", "icon": "🏔️", "title": "金沙遗址博物馆", "desc": "门票¥70 太阳神鸟 古蜀文明精华", "cost": 70, "type": "景点", "link": "高德", "kw": "金沙遗址博物馆"},
+            {"time": "12:00-13:00", "icon": "🥟", "title": "午餐", "desc": "金沙附近 川菜家常菜", "cost": 50, "type": "美食", "link": "大众点评", "kw": "金沙美食"},
+            {"time": "13:30-16:00", "icon": "🏛️", "title": "杜甫草堂", "desc": "门票¥50 诗人杜甫故居 清幽雅致", "cost": 50, "type": "景点", "link": "高德", "kw": "杜甫草堂"},
+            {"time": "16:00-18:00", "icon": "🌳", "title": "人民公园", "desc": "免费 鹤鸣茶社喝茶 体验成都慢生活", "cost": 20, "type": "景点", "link": "高德", "kw": "人民公园"},
+            {"time": "18:30-20:00", "icon": "🍜", "title": "晚餐：川菜", "desc": "饕林/马旺子 地道川菜馆", "cost": 80, "type": "美食", "link": "大众点评", "kw": "成都川菜馆"},
+            {"time": "20:00", "icon": "🏨", "title": "回酒店休息", "desc": "步行回春熙路酒店", "cost": 0, "type": "交通"},
+        ]
+    },
+    {
+        "day": 4, "theme": "成都→重庆 · 山城初遇", "color": "#667eea",
         "items": [
             {"time": "08:00-08:30", "icon": "🍜", "title": "早餐退房", "desc": "酒店早餐+办理退房", "cost": 0, "type": "住宿"},
-            {"time": "08:30-09:10", "icon": "🚕", "title": "市区→青岩古镇", "desc": "打车到青岩古镇 约35min ¥50", "cost": 50, "type": "交通"},
-            {"time": "09:30-12:00", "icon": "🏯", "title": "青岩古镇", "desc": "门票¥10 卤猪脚必吃(金必轩)", "cost": 10, "type": "景点", "link": "高德", "kw": "青岩古镇"},
-            {"time": "12:00-13:00", "icon": "🥟", "title": "午餐：丝娃娃", "desc": "古镇内午餐 丝娃娃+卤猪脚", "cost": 45, "type": "美食", "link": "大众点评", "kw": "青岩古镇美食"},
-            {"time": "13:00-13:40", "icon": "🚕", "title": "青岩古镇→贵阳北站", "desc": "打车到高铁站 约35min ¥50", "cost": 50, "type": "交通"},
-            {"time": "14:00-14:30", "icon": "⏳", "title": "贵阳北站候车", "desc": "提前到站取票/刷身份证进站", "cost": 0, "type": "交通"},
-            {"time": "14:30-18:30", "icon": "🚄", "title": "高铁G2922回程", "desc": "贵阳北→广州南 3h49min", "cost": 422, "type": "交通", "link": "12306", "kw": "贵阳北-广州南"},
+            {"time": "08:30-09:00", "icon": "🚕", "title": "酒店→成都东站", "desc": "春熙路到成都东站 约20min ¥25", "cost": 25, "type": "交通"},
+            {"time": "09:00-09:30", "icon": "⏳", "title": "成都东站候车", "desc": "提前到站取票候车", "cost": 0, "type": "交通"},
+            {"time": "09:30-10:50", "icon": "🚄", "title": "高铁G8571", "desc": "成都东→重庆西 1h15min ¥146", "cost": 146, "type": "交通", "link": "12306", "kw": "成都东-重庆西"},
+            {"time": "10:50-11:20", "icon": "🚕", "title": "重庆西站→解放碑", "desc": "打车到解放碑区域 约15km 25min ¥35", "cost": 35, "type": "交通"},
+            {"time": "11:20-12:00", "icon": "🏨", "title": "入住酒店", "desc": "解放碑/洪崖洞区域 舒适型酒店", "cost": 300, "type": "住宿", "link": "携程", "kw": "重庆解放碑酒店"},
+            {"time": "12:00-13:00", "icon": "🍜", "title": "午餐：重庆小面", "desc": "花市豌杂面/秦云老太婆摊摊面 必吃", "cost": 15, "type": "美食", "link": "大众点评", "kw": "重庆小面"},
+            {"time": "13:30-17:00", "icon": "🏯", "title": "磁器口古镇", "desc": "免费 千年古镇 陈麻花+毛血旺", "cost": 0, "type": "景点", "link": "高德", "kw": "磁器口古镇"},
+            {"time": "17:00-18:00", "icon": "🚕", "title": "磁器口→解放碑", "desc": "打车回解放碑 约20min ¥25", "cost": 25, "type": "交通"},
+            {"time": "18:00-19:00", "icon": "🍲", "title": "晚餐：重庆火锅", "desc": "佩姐/周师兄/珮姐 重庆牛油火锅", "cost": 90, "type": "美食", "link": "大众点评", "kw": "重庆火锅"},
+            {"time": "19:30-21:00", "icon": "🌃", "title": "解放碑+洪崖洞夜景", "desc": "免费 网红打卡地 千与千寻同款夜景", "cost": 0, "type": "景点", "link": "高德", "kw": "洪崖洞"},
+        ]
+    },
+    {
+        "day": 5, "theme": "魔幻山城 · 重庆深度", "color": "#9B59B6",
+        "items": [
+            {"time": "08:30-09:00", "icon": "🍜", "title": "早餐：油茶/糍粑", "desc": "重庆特色早餐 路边小店", "cost": 10, "type": "美食", "link": "大众点评", "kw": "重庆油茶"},
+            {"time": "09:30-11:00", "icon": "🏛️", "title": "长江索道", "desc": "门票单程¥20 跨江空中巴士 必体验", "cost": 20, "type": "景点", "link": "高德", "kw": "长江索道"},
+            {"time": "11:00-12:30", "icon": "🏘️", "title": "山城步道", "desc": "免费 第三步道 体验真正的山城地形", "cost": 0, "type": "景点", "link": "高德", "kw": "山城第三步道"},
+            {"time": "12:30-13:30", "icon": "🍜", "title": "午餐：毛血旺", "desc": "磁器口/解放碑附近 重庆江湖菜", "cost": 60, "type": "美食", "link": "大众点评", "kw": "重庆毛血旺"},
+            {"time": "14:00-17:00", "icon": "🎨", "title": "鹅岭二厂+李子坝", "desc": "免费 文艺打卡地+轻轨穿楼网红观景台", "cost": 0, "type": "景点", "link": "高德", "kw": "鹅岭二厂"},
+            {"time": "17:00-18:00", "icon": "🚕", "title": "返回解放碑", "desc": "打车回酒店休息 约15min ¥20", "cost": 20, "type": "交通"},
+            {"time": "18:30-20:00", "icon": "🍲", "title": "晚餐：江湖菜", "desc": "曾老幺鱼庄/饭江湖 重庆特色江湖菜", "cost": 70, "type": "美食", "link": "大众点评", "kw": "重庆江湖菜"},
+            {"time": "20:00-21:00", "icon": "🌃", "title": "南滨路夜景", "desc": "免费 看渝中半岛夜景最佳位置", "cost": 0, "type": "景点", "link": "高德", "kw": "南滨路"},
+        ]
+    },
+    {
+        "day": 6, "theme": "重庆→广州 · 满载而归", "color": "#E74C3C",
+        "items": [
+            {"time": "07:00-07:30", "icon": "🍜", "title": "早餐退房", "desc": "酒店早餐+办理退房", "cost": 0, "type": "住宿"},
+            {"time": "07:30-08:00", "icon": "🚕", "title": "酒店→重庆西站", "desc": "解放碑到重庆西站 约25min ¥35", "cost": 35, "type": "交通"},
+            {"time": "08:00-08:30", "icon": "⏳", "title": "重庆西站候车", "desc": "提前到站取票候车", "cost": 0, "type": "交通"},
+            {"time": "08:30-14:25", "icon": "🚄", "title": "高铁G3711", "desc": "重庆西→广州南 5h53min ¥481", "cost": 481, "type": "交通", "link": "12306", "kw": "重庆西-广州南"},
+            {"time": "14:25-15:00", "icon": "🚇", "title": "返回家", "desc": "广州南站地铁/打车回家", "cost": 30, "type": "交通"},
         ]
     }
 ]
 
 # === 美食推荐 ===
 FOODS = [
-    ("肠旺面", "金牌罗记肠旺面", "¥12"),
-    ("豆腐圆子", "雷家豆腐圆子", "¥10"),
-    ("但家香酥鸭", "小十字总店", "¥30"),
-    ("恋爱豆腐果", "路边摊", "¥5"),
-    ("冰粉", "随便一家", "¥5"),
-    ("卤猪脚", "金必轩(青岩)", "¥40"),
+    ("火锅", "小龙坎/佩姐/周师兄", "¥80-100"),
+    ("串串香", "钢管厂五区/冒椒火辣", "¥50-60"),
+    ("担担面", "陈麻婆豆腐", "¥12"),
+    ("钟水饺", "龙抄手", "¥15"),
+    ("重庆小面", "花市豌杂面", "¥15"),
+    ("毛血旺", "磁器口古镇", "¥60"),
+    ("钵钵鸡", "宽窄巷子", "¥40"),
+    ("冰粉", "路边摊/火锅店", "¥8"),
 ]
 
 # === 预算明细 ===
 BUDGET_ITEMS = [
-    ("🚄 高铁往返", 828, "#667eea"),
-    ("🏨 住宿2晚", 600, "#9B59B6"),
-    ("🍜 餐饮美食", 325, "#E74C3C"),
-    ("🚕 市内交通", 250, "#1ABC9C"),
-    ("🎫 门票", 35, "#FFB347"),
-    ("📦 其他", 50, "#95A5A6"),
+    ("🚄 跨城高铁", 1272, "#667eea"),
+    ("🏨 住宿5晚", 1500, "#9B59B6"),
+    ("🍜 餐饮美食", 700, "#E74C3C"),
+    ("🚕 市内交通", 370, "#1ABC9C"),
+    ("🎫 门票", 245, "#FFB347"),
+    ("📦 其他", 200, "#95A5A6"),
 ]
 
 # ===== 计算总计 =====
@@ -146,7 +184,8 @@ def build_html():
     # 美食HTML
     food_html = ""
     for f in FOODS:
-        food_html += f'<div class="fi"><div><div class="fn">{esc(f[0])}</div><div class="fs">{esc(f[1])}</div></div><div class="fp">{esc(f[2])}</div></div>'
+        kw = esc(f[0])
+        food_html += f'<a class="fl" href="https://www.xiaohongshu.com/search_result?keyword={kw}" target="_blank"><div class="fi"><div><div class="fn">{kw}</div><div class="fs">{esc(f[1])}</div></div><div class="fp">{esc(f[2])}</div></div></a>'
 
     # 预算HTML
     budget_html = ""
@@ -217,7 +256,8 @@ body{{font-family:'Inter','Noto Sans SC',sans-serif;background:#f5f0eb;color:#2c
 
 /* Food Grid */
 .fg{{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:8px}}
-.fi{{display:flex;justify-content:space-between;align-items:center;padding:14px 18px;background:#fff;border-radius:12px;box-shadow:0 1px 8px rgba(0,0,0,.04);transition:.2s}}
+.fl{{text-decoration:none;color:inherit;display:block}}
+.fi{{display:flex;justify-content:space-between;align-items:center;padding:14px 18px;background:#fff;border-radius:12px;box-shadow:0 1px 8px rgba(0,0,0,.04);transition:.2s;cursor:pointer}}
 .fi:hover{{transform:translateY(-2px);box-shadow:0 4px 16px rgba(255,107,53,.1)}}
 .fn{{font-size:16px;font-weight:600}}
 .fs{{font-size:13px;color:#999;margin-top:1px}}
