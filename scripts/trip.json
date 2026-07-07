@@ -18,12 +18,12 @@
       "theme": "老城烟火 · 市区漫步",
       "color": "#FF6B35",
       "items": [
-        {"icon": "🚄", "title": "高铁出发", "desc": "G2942 广州南-贵阳北 3h26min", "cost": 406, "platform": "12306"},
-        {"icon": "🏨", "title": "入住酒店", "desc": "喷水池区域 舒适型酒店", "cost": 150, "platform": "携程"},
-        {"icon": "🍜", "title": "酸汤鱼午餐", "desc": "亮欢寨酸汤鱼(飞山街店)", "cost": 80, "platform": "大众点评"},
-        {"icon": "🐒", "title": "黔灵山公园", "desc": "门票5元 看野生猕猴+熊猫", "cost": 5, "platform": "高德"},
-        {"icon": "🍢", "title": "民生路扫街", "desc": "肠旺面+豆腐圆子+香酥鸭", "cost": 62, "platform": "大众点评"},
-        {"icon": "🌃", "title": "甲秀楼夜景", "desc": "免费 贵阳地标 南明河畔", "cost": 0, "platform": "高德"}
+        {"icon": "🚄", "title": "高铁出发", "desc": "G2942 广州南-贵阳北 3h26min", "cost": 406, "platform": "12306", "for": [0,1,2], "status": "confirmed"},
+        {"icon": "🏨", "title": "入住酒店", "desc": "喷水池区域 舒适型酒店", "cost": 150, "platform": "携程", "for": [0,1,2], "status": "pending"},
+        {"icon": "🍜", "title": "酸汤鱼午餐", "desc": "亮欢寨酸汤鱼(飞山街店)", "cost": 80, "platform": "大众点评", "for": [0,2], "status": "pending", "note": "妈妈不能吃辣，给她点一份不辣的"},
+        {"icon": "🐒", "title": "黔灵山公园", "desc": "门票5元 看野生猕猴+熊猫", "cost": 5, "platform": "高德", "for": [0,1,2], "status": "confirmed"},
+        {"icon": "🍢", "title": "民生路扫街", "desc": "肠旺面+豆腐圆子+香酥鸭", "cost": 62, "platform": "大众点评", "for": [0,2], "status": "pending"},
+        {"icon": "🌃", "title": "甲秀楼夜景", "desc": "免费 贵阳地标 南明河畔", "cost": 0, "platform": "高德", "for": [0,1,2], "status": "confirmed"}
       ]
     },
     {
@@ -31,12 +31,12 @@
       "theme": "山水古镇 · 文艺探索",
       "color": "#4ECDC4",
       "items": [
-        {"icon": "🍜", "title": "牛肉粉早餐", "desc": "花溪王记牛肉粉(民生路店)", "cost": 18, "platform": "大众点评"},
-        {"icon": "🏛️", "title": "省博物馆", "desc": "免费 苗族银饰+民族服饰", "cost": 0, "platform": "高德"},
-        {"icon": "🍲", "title": "酸汤鱼午餐", "desc": "老凯俚酸汤鱼(省府路总店)", "cost": 60, "platform": "大众点评"},
-        {"icon": "🗿", "title": "花溪夜郎谷", "desc": "门票20元 石头城堡超出片", "cost": 20, "platform": "高德"},
-        {"icon": "🌮", "title": "青云市集", "desc": "烙锅+烤串 老厂房夜市", "cost": 60, "platform": "大众点评"},
-        {"icon": "🚗", "title": "市内交通", "desc": "打车往返各景点", "cost": 40, "platform": "高德"}
+        {"icon": "🍜", "title": "牛肉粉早餐", "desc": "花溪王记牛肉粉(民生路店)", "cost": 18, "platform": "大众点评", "for": [0,1,2], "status": "confirmed"},
+        {"icon": "🏛️", "title": "省博物馆", "desc": "免费 苗族银饰+民族服饰", "cost": 0, "platform": "高德", "for": [0,1,2], "status": "confirmed"},
+        {"icon": "🍲", "title": "酸汤鱼午餐", "desc": "老凯俚酸汤鱼(省府路总店)", "cost": 60, "platform": "大众点评", "for": [0,2], "status": "pending", "note": "妈妈另外点个小炒"},
+        {"icon": "🗿", "title": "花溪夜郎谷", "desc": "门票20元 石头城堡超出片", "cost": 20, "platform": "高德", "for": [0,2], "status": "pending"},
+        {"icon": "🌮", "title": "青云市集", "desc": "烙锅+烤串 老厂房夜市", "cost": 60, "platform": "大众点评", "for": [0,2], "status": "pending"},
+        {"icon": "🚗", "title": "市内交通", "desc": "打车往返各景点", "cost": 40, "platform": "高德", "for": [0,1,2], "status": "confirmed"}
       ]
     },
     {
@@ -44,10 +44,10 @@
       "theme": "古镇收尾 · 满载而归",
       "color": "#FFD93D",
       "items": [
-        {"icon": "🏯", "title": "青岩古镇", "desc": "门票10元 卤猪脚必吃 金必轩", "cost": 10, "platform": "高德"},
-        {"icon": "🥟", "title": "丝娃娃午餐", "desc": "丝恋红汤丝娃娃 自己动手包", "cost": 25, "platform": "大众点评"},
-        {"icon": "🚄", "title": "高铁返回", "desc": "G2922 贵阳北-广州南 3h49min", "cost": 422, "platform": "12306"},
-        {"icon": "🚗", "title": "市内交通", "desc": "打车到古镇+到高铁站", "cost": 40, "platform": "高德"}
+        {"icon": "🏯", "title": "青岩古镇", "desc": "门票10元 卤猪脚必吃 金必轩", "cost": 10, "platform": "高德", "for": [0,1,2], "status": "confirmed"},
+        {"icon": "🥟", "title": "丝娃娃午餐", "desc": "丝恋红汤丝娃娃 自己动手包", "cost": 25, "platform": "大众点评", "for": [0,2], "status": "pending"},
+        {"icon": "🚄", "title": "高铁返回", "desc": "G2922 贵阳北-广州南 3h49min", "cost": 422, "platform": "12306", "for": [0,1,2], "status": "confirmed"},
+        {"icon": "🚗", "title": "市内交通", "desc": "打车到古镇+到高铁站", "cost": 40, "platform": "高德", "for": [0,1,2], "status": "confirmed"}
       ]
     }
   ],

@@ -26,10 +26,32 @@ for d in days:
         url = BURL.get(it["platform"], "#")
         if it["platform"] == "高德": url += ESC(it["title"])
         cs = "FREE" if it["cost"] == 0 else ("¥" + str(it["cost"]))
-        its += '<div class="it"><div class="ii">{icon}</div><div class="ib"><div class="itl">{title}</div><div class="idd">{desc}</div></div><div class="ia"><span class="ip" style="color:{color}">{cs}</span><a class="bl {bcls}" href="{url}" target="_blank">{plat}</a></div></div>'.format(
+
+        # Team member indicators
+        team_tags = ""
+        if team and "for" in it and it["for"]:
+            for idx in it["for"]:
+                if idx < len(team):
+                    name = team[idx].get("name","?")[:1]  # First char
+                    team_tags += '<span class="tb tb_{idx}" title="{full}">{name}</span>'.format(idx=idx, full=ESC(team[idx].get("name","?")), name=name)
+
+        # Status badge
+        status = it.get("status","pending")
+        if status == "confirmed":
+            status_badge = '<span class="its its-ok">✅</span>'
+        else:
+            status_badge = '<span class="its its-pd">⏳</span>'
+
+        # Note
+        note_html = ""
+        if it.get("note"):
+            note_html = '<div class="in">💬 {n}</div>'.format(n=ESC(it["note"]))
+
+        its += '<div class="it"><div class="ii">{icon}</div><div class="ib"><div class="itl">{title}{status}</div><div class="idd">{desc}</div>{note}{team}</div><div class="ia"><span class="ip" style="color:{color}">{cs}</span><a class="bl {bcls}" href="{url}" target="_blank">{plat}</a></div></div>'.format(
             icon=it["icon"], title=ESC(it["title"]), desc=ESC(it["desc"]),
             color=d["color"], cs=cs, bcls=BCLS.get(it["platform"],"b1"),
-            url=ESC(url), plat=it["platform"])
+            url=ESC(url), plat=it["platform"],
+            status=status_badge, team=team_tags, note=note_html)
     dn = ("0" + str(d["day"])) if d["day"] < 10 else str(d["day"])
     days_h += '<div class="dc"><div class="ds" style="background:{co}"></div><div class="dh"><span class="dn" style="color:{co}">{dn}</span><span class="dt2">{th}</span></div><div class="di">{it}</div><div class="dtol" style="color:{co}">📊 本日小计 ¥{sub}</div></div>'.format(co=d["color"], dn=dn, th=ESC(d["theme"]), it=its, sub=sub)
 
@@ -134,6 +156,17 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:18px 48px;display:fl
 .tc h3,.cc h3{font-size:18px;font-weight:700;margin-bottom:14px;color:#2c2c2c}
 .tl li,.cl li{list-style:none;font-size:16px;color:#666;padding:8px 0}
 .tl li::before{content:"\\2726";color:#FF6B35;margin-right:10px}
+.its{font-size:13px;margin-left:4px}
+.its-pd{opacity:.4}
+.in{font-size:12px;color:#cc8844;margin-top:2px;font-style:italic}
+.tb{display:inline-flex;width:20px;height:20px;border-radius:50%;align-items:center;justify-content:center;font-size:10px;font-weight:700;color:#fff;margin:0 1px;vertical-align:middle}
+.tb_0{background:#FF6B35}.tb_1{background:#9B59B6}.tb_2{background:#1ABC9C}.tb_3{background:#3498DB}.tb_4{background:#E74C3C}
+.share-bar{display:flex;justify-content:center;gap:12px;margin-top:24px;flex-wrap:wrap}
+.share-btn{display:inline-flex;align-items:center;gap:6px;padding:10px 24px;border-radius:12px;font-size:14px;font-weight:500;text-decoration:none;border:none;cursor:pointer;transition:.3s}
+.share-btn:hover{transform:translateY(-2px);box-shadow:0 4px 16px rgba(0,0,0,.12)}
+.sb-copy{background:#FF6B35;color:#fff}
+.sb-wechat{background:#07C160;color:#fff}
+.sb-dl{background:#667eea;color:#fff}
 .fi2{text-decoration:none;color:#999;display:flex;flex-direction:column;align-items:center;gap:4px;transition:.3s;padding:8px}
 .fi2:hover{color:var(--hc)}
 .fi2 .ficon{font-size:22px;width:48px;height:48px;display:flex;align-items:center;justify-content:center;background:#f5f0eb;border-radius:12px;transition:.3s}
@@ -181,6 +214,24 @@ html += '<div class="tc"><h3>💡 省钱小贴士</h3><ul class="tl">' + tips_h 
 html += '<div class="cc"><h3>✅ 出发清单</h3><ul class="cl">' + check_h + '</ul></div>\n'
 html += '</div>\n</section>\n'
 # Footer
+# Status legend
+html += '<div style="max-width:960px;margin:0 auto;padding:0 24px">\n'
+html += '<div style="display:flex;justify-content:center;gap:20px;flex-wrap:wrap;font-size:13px;color:#999;margin-bottom:16px">\n'
+html += '<span>✅ 已确认</span><span>⏳ 待确认</span>'
+for i, m in enumerate(team):
+    html += '<span><span style="display:inline-block;width:16px;height:16px;border-radius:50%;background:#{c};color:#fff;font-size:8px;text-align:center;line-height:16px;margin-right:4px">{n}</span> {name}</span>'.format(
+        c={0:"FF6B35",1:"9B59B6",2:"1ABC9C",3:"3498DB",4:"E74C3C"}.get(i,"667eea"),
+        n=m["name"][0] if m.get("name") else "?",
+        name=ESC(m.get("name","")))
+html += '</div></div>\n'
+
+# Share bar
+html += '<div style="max-width:960px;margin:0 auto;padding:0 24px">\n'
+html += '<div class="share-bar">\n'
+html += '<button class="share-btn sb-copy" onclick="shareCopy()">📋 复制链接分享</button>\n'
+html += '<button class="share-btn sb-dl" onclick="shareDownload()">💾 下载攻略文件</button>\n'
+html += '</div></div>\n'
+
 html += '<div class="ft">\n'
 html += '<div style="display:flex;justify-content:center;gap:18px;margin-bottom:18px;flex-wrap:wrap">' + platform_h + '</div>\n'
 html += '由 私人旅行管家 · Travel Agent Skill 生成\n</div>\n'
@@ -189,6 +240,8 @@ html += '<script>\n'
 html += 'var ob=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting)e.target.classList.add("v")})});\n'
 html += 'document.querySelectorAll(".dc").forEach(function(e){ob.observe(e)});\n'
 html += 'setTimeout(function(){document.querySelectorAll(".bf").forEach(function(e,i){setTimeout(function(){var w=e.style.width;e.style.width=w||"0%"},i*120)})},400);\n'
+html += 'function shareCopy(){var u=location.href;navigator.clipboard.writeText(u).then(function(){var b=document.querySelector(".sb-copy");b.textContent="✅ 已复制!";setTimeout(function(){b.textContent="📋 复制链接分享"},2000)})}\n'
+html += 'function shareDownload(){var h=\'<html>\'+document.documentElement.innerHTML+\'</html>\';var b=new Blob([h],{type:"text/html"});var a=document.createElement("a");a.href=URL.createObjectURL(b);a.download="travel_guide.html";a.click()}\n'
 html += '</script>\n</body>\n</html>'
 
 with open(os.path.join(DIR, "travel_guide.html"), "w", encoding="utf-8") as f:
