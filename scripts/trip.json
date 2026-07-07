@@ -1,0 +1,85 @@
+{
+  "trip": {
+    "name": "贵阳3天2晚",
+    "subtitle": "广州出发 · 避暑美食之旅",
+    "from_to": "广州南 - 贵阳北",
+    "days": 3,
+    "budget": 2000,
+    "weather": "23°C"
+  },
+  "team": [
+    {"name": "我", "age": 26, "notes": ""}
+  ],
+  "days": [
+    {
+      "day": 1,
+      "theme": "老城烟火 · 市区漫步",
+      "color": "#FF6B35",
+      "items": [
+        {"icon": "🚄", "title": "高铁出发", "desc": "G2942 广州南-贵阳北 3h26min", "cost": 406, "platform": "12306"},
+        {"icon": "🏨", "title": "入住酒店", "desc": "喷水池区域 舒适型酒店", "cost": 150, "platform": "携程"},
+        {"icon": "🍜", "title": "酸汤鱼午餐", "desc": "亮欢寨酸汤鱼(飞山街店)", "cost": 80, "platform": "大众点评"},
+        {"icon": "🐒", "title": "黔灵山公园", "desc": "门票5元 看野生猕猴+熊猫", "cost": 5, "platform": "高德"},
+        {"icon": "🍢", "title": "民生路扫街", "desc": "肠旺面+豆腐圆子+香酥鸭", "cost": 62, "platform": "大众点评"},
+        {"icon": "🌃", "title": "甲秀楼夜景", "desc": "免费 贵阳地标 南明河畔", "cost": 0, "platform": "高德"}
+      ]
+    },
+    {
+      "day": 2,
+      "theme": "山水古镇 · 文艺探索",
+      "color": "#4ECDC4",
+      "items": [
+        {"icon": "🍜", "title": "牛肉粉早餐", "desc": "花溪王记牛肉粉(民生路店)", "cost": 18, "platform": "大众点评"},
+        {"icon": "🏛️", "title": "省博物馆", "desc": "免费 苗族银饰+民族服饰", "cost": 0, "platform": "高德"},
+        {"icon": "🍲", "title": "酸汤鱼午餐", "desc": "老凯俚酸汤鱼(省府路总店)", "cost": 60, "platform": "大众点评"},
+        {"icon": "🗿", "title": "花溪夜郎谷", "desc": "门票20元 石头城堡超出片", "cost": 20, "platform": "高德"},
+        {"icon": "🌮", "title": "青云市集", "desc": "烙锅+烤串 老厂房夜市", "cost": 60, "platform": "大众点评"},
+        {"icon": "🚗", "title": "市内交通", "desc": "打车往返各景点", "cost": 40, "platform": "高德"}
+      ]
+    },
+    {
+      "day": 3,
+      "theme": "古镇收尾 · 满载而归",
+      "color": "#FFD93D",
+      "items": [
+        {"icon": "🏯", "title": "青岩古镇", "desc": "门票10元 卤猪脚必吃 金必轩", "cost": 10, "platform": "高德"},
+        {"icon": "🥟", "title": "丝娃娃午餐", "desc": "丝恋红汤丝娃娃 自己动手包", "cost": 25, "platform": "大众点评"},
+        {"icon": "🚄", "title": "高铁返回", "desc": "G2922 贵阳北-广州南 3h49min", "cost": 422, "platform": "12306"},
+        {"icon": "🚗", "title": "市内交通", "desc": "打车到古镇+到高铁站", "cost": 40, "platform": "高德"}
+      ]
+    }
+  ],
+  "foods": [
+    {"name": "肠旺面", "shop": "金牌罗记肠旺面", "price": "12元", "keyword": "贵阳肠旺面"},
+    {"name": "豆腐圆子", "shop": "雷家豆腐圆子", "price": "10元", "keyword": "贵阳豆腐圆子"},
+    {"name": "但家香酥鸭", "shop": "小十字总店", "price": "30元", "keyword": "贵阳但家香酥鸭"},
+    {"name": "恋爱豆腐果", "shop": "路边摊", "price": "5元", "keyword": "贵阳恋爱豆腐果"},
+    {"name": "冰粉", "shop": "随便一家", "price": "5元", "keyword": "贵阳冰粉"}
+  ],
+  "budget": [
+    {"label": "高铁往返", "cost": 828},
+    {"label": "住宿2晚", "cost": 600},
+    {"label": "餐饮美食", "cost": 305},
+    {"label": "门票", "cost": 35},
+    {"label": "市内交通", "cost": 100}
+  ],
+  "platforms": [
+    {"name": "12306", "url": "https://www.12306.cn/", "icon": "🚄", "hover_color": "#EE4D2D"},
+    {"name": "携程", "url": "https://hotels.ctrip.com/", "icon": "🏨", "hover_color": "#1E90D7"},
+    {"name": "大众点评", "url": "https://www.dianping.com/", "icon": "🍜", "hover_color": "#FFC300"},
+    {"name": "小红书", "url": "https://www.xiaohongshu.com/search_result?keyword=贵阳美食", "icon": "📕", "hover_color": "#FF2442"},
+    {"name": "高德", "url": "https://ditu.amap.com/", "icon": "🗺️", "hover_color": "#29A1FF"}
+  ],
+  "tips": [
+    "选D字头动车可省116元",
+    "两人出行住宿分摊省300元",
+    "博物馆/甲秀楼/青云市集免费",
+    "7月多雨记得带伞"
+  ],
+  "checklist": [
+    "身份证、学生证",
+    "晴雨伞、薄外套",
+    "充电宝、数据线",
+    "12306/携程/大众点评/高德"
+  ]
+}
