@@ -280,7 +280,7 @@ with gr.Blocks(title="私人旅行管家") as demo:
     - 手机电脑都能看
 
     ### 👩‍💻 作者
-    萧钰瑶 (XiaoiYuyao) · [GitHub](https://github.com/XiaoiYuyao/travel-agent-skill)
+    XiaoiYuyao · [GitHub](https://github.com/XiaoiYuyao/travel-agent-skill)
     """)
 
 if __name__ == "__main__":

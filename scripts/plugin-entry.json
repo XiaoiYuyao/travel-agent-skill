@@ -3,7 +3,7 @@
   "description": "私人旅行管家 — 输入出发地/目的地/天数/预算，一键生成完整HTML旅行攻略。包含每日交通衔接、酒店住宿、景点安排、美食推荐、打车衔接，支持一键跳转12306/携程/大众点评/高德/小红书，美食直达小红书搜索攻略。生成的文件保存到桌面，双击即可查看，无需任何服务器或登录。",
   "version": "3.1.0",
   "author": {
-    "name": "萧钰瑶 (XiaoiYuyao)",
+    "name": "XiaoiYuyao",
     "url": "https://github.com/XiaoiYuyao"
   },
   "repository": "https://github.com/XiaoiYuyao/travel-agent-skill",
