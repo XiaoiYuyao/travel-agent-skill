@@ -65,7 +65,15 @@ description: >
 
 ---
 
-## 脚本使用
+## 配套网页版
+
+本 Skill 附带 **Gradio 网页版**（`gradio_app/app.py`），供非 Claude Code 用户使用。
+数据互通——Skill 对话可输出到网页版数据格式，网页版可离线生成攻略。
+
+```
+cd gradio_app && python app.py
+# → http://localhost:7870
+```
 
 ```bash
 pip install python-docx folium matplotlib Pillow
